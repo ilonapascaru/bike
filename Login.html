@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biker</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/functions.js"></script>
+    
+  </head>
+
+  <body>
+    <div class="bg">
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    <div class="sidenav" id="mySidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="index.html">Home</a>
+      <a href="Contact.html">Contact</a>
+      <a href="About.html">About</a>
+    </div>
+  <form id="myForm" action="User.html">
+  <ul class="myList">
+    <li>
+      <label for="email">Email:</label><br>
+      <input type="text" id="email" placeholder="example@mail.com" required/>
+    </li>
+    <li>
+      <label for="password">Password:</label><br>
+      <input type="password" id="password" placeholder="*****" required/>
+    </li>
+    <li>
+      <input type="submit" class="loginbutton" value="LOGIN"/>
+    </li>
+  </ul>
+</form>
+</div>
+  </body>
+</html>

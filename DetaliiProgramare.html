@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biker</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/functions.js"></script>
+    
+  </head>
+
+  <body>
+    <div class="bg">
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    <div class="sidenav" id="mySidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="ProgramariAdmin.html">Programari</a>
+      <a href="Stocuri.html">Stocuri</a>
+      <a href="Comenzi.html">Comenzi</a>
+      <a href="index.html">Logout</a>
+
+    </div>
+
+    <div class="detalii-programare">
+      <div class="programare-header">
+        <div class="header-item" id="data">15 IUNIE 2019 12:00</div>
+        <div class="header-item" id="problema">Sarit lantul</div>
+        <div class="header-item" id="status">-</div>
+      </div>
+      <div class="programare-body">
+        <div class="body-item" id="detalii-programare-body">In urma unui accident iminent cu un stalp a sarit lantul de pe foaie si nu mai pot sa il mai pun la loc pentru ca foaia este indoita. Modelul este cel din imagine.</div>
+        <div class="body-item" id="detalii-utilizator">
+          <ul>
+          <li> Nume: Popescu Ion
+          <li> Telefon: 0785674256
+          <li> Email: popescu.ion@ceva.com
+          <li> Adresa: strada Castanilor, Vaslui
+          <li> Programari anterioare: 0
+          <li> Model: Pegas 2000
+         </ul>
+        </div>
+      </div>
+      <div class="programare-galerie">
+        <div class="gallery">
+              <a target="_blank" href="img/lant1.jpg">
+              <img src="img/lant1.jpg" alt="bicicleta" width="600" height="400">
+              </a>
+              <div class="desc">Foaia stricata</div>
+            </div>
+
+            <div class="gallery">
+              <a target="_blank" href="img/lant2.jpg">
+              <img src="img/lant2.jpg" alt="bicicleta" width="600" height="400">
+              </a>
+              <div class="desc">Lantul de aproape</div>
+            </div>
+
+            <div class="gallery">
+              <a target="_blank" href="img/lant3.jpg">
+              <img src="img/lant3.jpg" alt="bicicleta" width="600" height="400">
+              </a>
+              <div class="desc">Model bicicleta</div>
+</div>
+      </div>
+      <div class="programare-raspuns">
+        <form id="programare-raspuns">
+        <label for="raspuns">Raspuns:</label><br>
+      <textarea rows=3 id="raspuns"></textarea><br>
+      <input type="submit" class="buton-acc" value="Accept"/>
+      <input type="submit" class="buton-refuz" value="Refuz"/>
+    </form>
+      </div>
+    </div>
+</div>
+  </body>
+</html>

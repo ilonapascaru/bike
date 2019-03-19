@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biker</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/functions.js"></script>
+    
+  </head>
+
+  <body>
+    <div class="bg">
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    <div class="sidenav" id="mySidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="ProgramariAdmin.html">Programari</a>
+      <a href="Stocuri.html">Stocuri</a>
+      <a href="Comenzi.html">Comenzi</a>
+      <a href="index.html">Logout</a>
+
+    </div>
+
+    <div class="stocuri">
+      <h2>Stocuri</h2>
+       <div class="cautare">
+        Piesa:
+        <select>
+          <option value="lant">Lant</option>
+          <option value="roata">Roata</option>
+          <option value="scaun">Scaun</option>
+          <option value="ghidon">Ghidon</option>
+          <option value="sonerie">Sonerie</option>
+          <option value="foaie">Foaie</option>
+        </select>
+        Model:
+       <select>
+          <option value="pegas">Pegas</option>
+          <option value="darkhorse">DarkHorse</option>
+          <option value="porumbelulvesel">Porumbelul Vesel</option>
+          <option value="pecas">Pecas</option>
+        </select>
+        An:
+        <select>
+          <option value="2014">2014</option>
+          <option value="2015">2015</option>
+          <option value="2016">2016</option>
+          <option value="2018">2018</option>
+        </select>
+
+        Pret:
+        <select>
+          <option value="mic">0-10</option>
+          <option value="ieftinut">10-100</option>
+          <option value="scumpisor">100-1000</option>
+          <option value="camscumput">>1000</option>
+        </select>
+        <table>
+          <tr>
+            <th>Piesa</th>
+            <th>Model</th>
+            <th>An</th>
+            <th>Pret</th>
+            <th>Bucati</th>
+          </tr>
+          <tr>
+            <td>Lant</td>
+            <td>Pegas</td>
+            <td>2014</td>
+            <td>135</td>
+            <td>2</td>
+          </tr>
+          <tr>
+             <td>Roata</td>
+            <td>Pegas</td>
+            <td>2015</td>
+            <td>150</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>Lant</td>
+            <td>DarkHorse</td>
+            <td>2010</td>
+            <td>200</td>
+            <td>1</td>
+          </tr>
+          <tr>
+             <td>Lant</td>
+            <td>Pecas</td>
+            <td>2015</td>
+            <td>25</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td>Ghidon</td>
+            <td>Proumbelul Vesel</td>
+            <td>2000</td>
+            <td>30</td>
+            <td>0</td>
+          </tr>
+          <tr>
+             <td>Dinam</td>
+            <td>Pegas</td>
+            <td>2015</td>
+            <td>550</td>
+            <td>2</td>
+          </tr>
+        </table>
+      </div>
+      <input type="file" class="buton-import"/>
+      <input type="submit" class="buton-export" value="Export"/>
+       <select>
+          <option value="csv">CSV</option>
+          <option value="pdf">PDF</option>
+          <option value="json">JSON</option>
+        </select>
+    </div>
+</div>
+  </body>
+</html>
