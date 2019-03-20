@@ -642,7 +642,7 @@ textarea:-ms-input-placeholder { color: #adadad;}
   border: 0;
 }
 .bg {
-  background-image: url("../img/bicicleta-Iezer.jpg"); 
+  background-image: url("../img/bicicleta-IezerMob.jpg"); 
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -680,7 +680,7 @@ textarea:-ms-input-placeholder { color: #adadad;}
   font-family: Arial Black;
   font-size: 20px;
 }
-.detalii-programare, .stocuri, .comenzi, .userMain, .adaugaProgramare, .adminMain{
+.detalii-programare, .stocuri, .comenzi, .userMain, .adaugaProgramare, .adminMain, .description{
   background: rgba(0,0,0,0.4);
   position: absolute;
   width: 90%;
@@ -975,7 +975,7 @@ div.desc {
   text-align: center;
   color: white;
 }
-.description{
+/*.description{
   background: white;
   opacity: 0.8;
   position: center;
@@ -983,7 +983,7 @@ div.desc {
   width: 35%;
   border:1px solid white;
   border-radius: 5%;
-}
+}*/
 
 .description h1{
   
