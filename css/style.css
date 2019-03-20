@@ -55,6 +55,11 @@ body,html{
 
 }
 
+.adaugaProgramare{
+  border:1px solid black;
+}
+
+
 /*@media (max-width: 768px) {
   .detalii-programare, .stocuri, .comenzi, .userMain, .adaugaProgramare{
   background: rgba(0,0,0,0.4);
@@ -378,7 +383,7 @@ div.desc {
   position: center;
   margin-left: 15%;
   width: 35%;
-  border:1px solid white;
+  border:0.8px solid white;
   border-radius: 5%;
 }
 
