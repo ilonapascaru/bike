@@ -1201,6 +1201,93 @@ textarea::-webkit-input-placeholder { color: #adadad;}
 textarea:-moz-placeholder { color: #adadad;}
 textarea::-moz-placeholder { color: #adadad;}
 textarea:-ms-input-placeholder { color: #adadad;}
+}
+
+slider{
+  display: block;
+  width:100%;
+  height: 100%;
+  background-color: #1f1f1f;
+  overflow: :hidden;
+  position: absolute;
+}
+
+slider > *{
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #1f1f1f;
+  animation: slide 12s infinite;
+  overflow: hidden;
+}
+
+slide:nth-child(1){
+  left:0%;
+  animation-delay: -1s;
+  background-image: url("../img/bicicleta-Iezer.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+slide:nth-child(2){
+  animation-delay: 2s;
+  background-image: url("../img/bicicleta-IezerMob.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+slide:nth-child(3){
+  animation-delay: 5s;
+  background-image: url("../img/bike.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+slide:nth-child(4){
+  animation-delay: 8s;
+  background-image: url("../img/bike2.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+slide p{
+  font-size : 65px;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  margin-top:170px;
+  color:#fff;
+}
 
 
+@keyframes slide {
+  0% {left:100%; width :100%;}
+  5% {left: 0%;}
+  25%{left: 0%;}
+  30%{left: -100%; width:100%;}
+  30.0001%{left:-100%; width:0%;}
+  100%{left: 100%; width:0%;}
+}
+
+.about{
+  background-image: url("../img/blackBike.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 70%;
+  background-position: center;
+
+}
+.bicicleta{
+  font-size: 180px;
+  text-align: center;
+  position: bottom;
+  color:white;
+  font-family: Nexa;
+}
+
+.aboutContent p{
+  font-family: Nexa Light;
+  padding-top: 30px;
+  column-count:2;
 }
