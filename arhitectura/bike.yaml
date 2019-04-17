@@ -1,0 +1,343 @@
+swagger: '2.0'
+info:
+  description: Sistem online de management al programărilor și stocurilor unui operatii de service de biciclete. 
+  version: 1.0.0
+  title: BikeS
+tags:
+  - name: user
+    description: operatii definire utilizator
+  - name: programari
+    description: operatii realizare programare
+  - name: stocuri
+    description: vizualizare si manipulare stocuri
+  - name: comenzi
+    description: manipulare si vizualizare comenzi
+  - name: mesaje
+    description: comunicare cu administratorul
+schemes:
+  - http
+paths:
+  /getProgramari:
+    get:
+      tags:
+        - programari
+      summary: 'obtine programari utilizator'
+      description: obtine programarile utilizatorului
+      operationId: getProgramari
+      consumes:
+        - text/html
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Succes!
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Programari"
+  /register:
+    post:
+      tags:
+        - user
+      summary: 'register'
+      operationId: register
+      consumes:
+        - application/json
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        '200':
+          description: Succes!
+  /getProgramare:
+    get:
+      tags:
+        - programari
+      summary: 'obtine programare utilizator'
+      description: obtine programare utilizator
+      operationId: getProgramare
+      consumes:
+        - text/html
+      produces:
+        - application/json
+      parameters:
+      - name: "programareId"
+        in: "path"
+        description: "ID programare"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        '200':
+          description: Succes!
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Programari"
+  /addProgramare:
+    post:
+      tags:
+        - programari
+      summary: 'adauga programare utilizator'
+      description: adauga programare
+      operationId: addProgramare
+      consumes:
+        - application/json
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Programari"
+      responses:
+        '200':
+          description: Succes!
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Programari"
+  /trimiteMesaj:
+    post:
+      tags:
+        - mesaje
+      summary: 'trimite mesaj catre admin'
+      operationId: trimitemesaj
+      consumes:
+        - application/json
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Mesaje"
+      responses:
+        '200':
+          description: Succes!
+  /raspundeMesaj:
+    post:
+      tags:
+        - mesaje
+      summary: 'raspuns mesaj de la admin'
+      operationId: raspundemesaj
+      consumes:
+        - application/json
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Mesaje"
+      responses:
+        '200':
+          description: Succes!
+  /confirmareProgramare:
+    post:
+      tags:
+        - programari
+      summary: 'confirmare programare utilizator'
+      description: confirmare programare
+      operationId: confirmare
+      consumes:
+        - application/json
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Programari"
+      responses:
+        '200':
+          description: Succes!
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Programari"
+  /login:
+    post:
+      tags:
+        - user
+      summary: 'logare utilizator '
+      description: logare utilizator folosind credentiale
+      operationId: login
+      consumes:
+        - text/html
+      produces:
+        - text/html
+      parameters:
+        - name: credentials
+          in: body
+          description: credentials for login
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '200':
+          description: Succes!
+  /logout:
+    post:
+      tags:
+        - user
+      summary: deconectare utilizator
+      description: Deconectare utilizator si redirectionare la pagina principala
+      operationId: logout
+      parameters: []
+      responses:
+        default:
+          description: successful operation
+  /getStocuri:
+    get:
+      tags:
+        - stocuri
+      summary: 'obtine stocuri piese'
+      operationId: getStocuri
+      consumes:
+        - text/html
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Succes!
+        '404':
+          description: programari inexistente
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Stocuri"
+  /getComenzi:
+    get:
+      tags:
+        - comenzi
+      summary: 'obtine comenzi piese'
+      operationId: getComenzi
+      consumes:
+        - text/html
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Succes!
+        '404':
+          description: programari inexistente
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Comenzi"
+definitions:
+  User:
+    type: object
+    required:
+    - "username"
+    - "password"
+    properties:
+      username:
+        type: string
+      password:
+        type: string
+      email:
+        type: string
+    xml:
+      name: User
+  Programari:
+    type: object
+    properties:
+      user:
+        type: object
+      category:
+        $ref: "#/definitions/User"
+      model:
+        type: string
+      descriere:
+        type: string
+      data:
+        type: string
+      ora:
+        type: string
+      text_raspuns:
+        type: string
+      pret_estimativ:
+        type: integer
+      atachament:
+        type: string
+    xml:
+      name: Programari
+  Furnizori:
+    type: object
+    properties:
+      nume:
+        type: string
+      model:
+        type: string
+      an:
+        type: integer
+      pret:
+        type: integer
+    xml:
+      name: Furnizori
+  Piesa:
+    type: object
+    properties:
+      nume:
+        type: string
+      model:
+        type: string
+      an:
+        type: integer
+      pret:
+        type: integer
+      furnizor:
+        type: object
+      category:
+        $ref: "#/definitions/Furnizori"
+    xml:
+      name: Piesa
+  Comenzi:
+    type: object
+    properties:
+      piesa:
+        type: object
+      category:
+        $ref: "#/definitions/Piesa"
+      data_livrare:
+        type: string
+      achitat:
+        type: string
+      bucati:
+        type: integer
+      pret:
+        type: integer
+      an:
+        type: integer
+      model:
+        type: string
+    xml:
+      name: Comenzi
+  Stocuri:
+    type: object
+    properties:
+      nume:
+        type: string
+      model:
+        type: string
+      an:
+        type: integer
+      pret:
+        type: integer
+    xml:
+      name: Stocuri
+  Mesaje:
+    type: object
+    properties:
+      nume:
+        type: string
+      email:
+        type: string
+      telefon:
+        type: integer
+      mesaj:
+        type: string
+    xml:
+      name: Mesaje
+  
