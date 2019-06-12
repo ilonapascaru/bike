@@ -14,7 +14,7 @@
     final String subject = "Raspuns Automat";
     final String messg = request.getParameter("raspuns");
     final String from = "ciobanualexandru95@gmail.com";
-    final String pass = "Dragonfable95";
+    final String pass = "";
     String host = "smtp.gmail.com";
 
             Properties props = new Properties();
