@@ -169,7 +169,41 @@ public class DatabaseFunction {
         }
         return mesaje;
     }
-    
+    public static DetaliiProgramari getDetaliiProgramari(Connection conn, int id){
+        DetaliiProgramari detaliiProgramari = new DetaliiProgramari();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try{
+            String sql = "select u.name, u.email, u.telefon, p.model, p.descriere, p.data, p.ora from user u  join programari p ON " +
+                    "u.id_user=p.id_user where p.id_programare=?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1,id);
+            rs = stmt.executeQuery();
+
+            while (rs.next()){
+                detaliiProgramari.user.setName(rs.getString("name"));
+                detaliiProgramari.user.setEmail(rs.getString("email"));
+                detaliiProgramari.user.setTelefon(rs.getInt("telefon"));
+                detaliiProgramari.programari.setModel(rs.getString("model"));
+                detaliiProgramari.programari.setDescriere(rs.getString("descriere"));
+                detaliiProgramari.programari.setData(rs.getDate("data"));
+                detaliiProgramari.programari.setOra(rs.getInt("ora"));
+                detaliiProgramari.programari.setIdProgramare(id);
+
+
+            }
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+        finally {
+            closeRs(rs);
+            closePs(stmt);
+        }
+
+
+        return detaliiProgramari;
+    }
     public static List<Stocuri> getStoc(Connection conn) throws SQLException {
         List<Stocuri> stocuri = new ArrayList<Stocuri>();
         PreparedStatement stmt = null;
@@ -229,7 +263,33 @@ public class DatabaseFunction {
         }
     }
 
-   
+    public static void SendMesaj(String name, String email, String text, int phone, Connection conn){
+        PreparedStatement stmt = null;
+        PreparedStatement stmt2 = null;
+        ResultSet rs = null;
+        int mesajId;
+
+        try{
+            String sql = "SELECT COUNT(*) AS ID FROM Mesaj";
+            stmt = conn.prepareStatement(sql);
+            rs=stmt.executeQuery();
+            rs.next();
+            mesajId = rs.getInt("ID");
+
+            String sql2 = "INSERT INTO Mesaj(`id_mesaj`,`nume`,`email`,`text`,`telefon`) " +
+                    "VALUES (?,?,?,?,?)";
+            stmt2 = conn.prepareStatement(sql2);
+            stmt2.setInt(1,mesajId+1);
+            stmt2.setString(2,name);
+            stmt2.setString(3,email);
+            stmt2.setString(4,text);
+            stmt2.setInt(5, phone);
+            stmt2.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static List<Comenzi> getComenzi(Connection conn) throws SQLException {
         List<Comenzi> comenzi = new ArrayList<Comenzi>();
         PreparedStatement stmt = null;
@@ -380,7 +440,78 @@ public class DatabaseFunction {
         return userId;
     }
 
-   
+    public static int getProgramareID( Connection conn){
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        int programareId = -1;
+        try{
+            String getIdCountSQL = "SELECT COUNT(ID_PROGRAMARE) AS ID FROM `bike`.`programari`";
+            stmt = conn.prepareStatement(getIdCountSQL);
+            rs = stmt.executeQuery();
+            rs.next();
+            programareId = rs.getInt("ID");
+
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+        finally {
+            closeRs(rs);
+            closePs(stmt);
+        }
+        return programareId;
+    }
+
+    public static void insertRaspunsProgramare(Connection conn, int idProgramare, String raspuns){
+        PreparedStatement stmt = null;
+        try{
+            String sqlUpdateRaspuns = "UPDATE `bike`.`programari`" +
+                    "SET text_raspuns=?" +
+                    "WHERE id_programare=?";
+            stmt = conn.prepareStatement(sqlUpdateRaspuns);
+            stmt.setString(1,raspuns);
+            stmt.setInt(2,idProgramare);
+            stmt.executeUpdate();
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+        finally {
+            closePs(stmt);
+        }
+    }
+    public static void insertProgramare(Connection conn, Programari progr){
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try{
+            String insertSQL = "INSERT INTO `bike`.`programari`" +
+                    "(`id_programare`, `id_user`, `model`, `descriere`, `data`, `ora`, `atachament_name`) " +
+                    "VALUES(?,?,?,?,?,?,?)";
+
+            stmt = conn.prepareStatement(insertSQL);
+            stmt.setInt(1, progr.getIdProgramare()+1);
+            stmt.setInt(2, progr.getIdUser());
+            stmt.setString(3, progr.getModel());
+            stmt.setString(4, progr.getDescriere());
+            stmt.setDate(5, (Date) progr.getData());
+            stmt.setInt(6, progr.getOra());
+            stmt.setBlob(7,progr.getAttachmentName());
+            stmt.executeUpdate();
+
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+        finally{
+            closeRs(rs);
+            closePs(stmt);
+            closeConn(conn);
+        }
+
+
+    }
+
 
 
     public static void insertArtefact(String localizare,String tip1,String rol, String tip, String secol,

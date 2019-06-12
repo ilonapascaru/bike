@@ -41,12 +41,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Example.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Example.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/Example.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="279">
               <caret line="91" column="81" lean-forward="false" selection-start-line="91" selection-start-column="81" selection-end-line="91" selection-end-column="81" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdaugaRaspunsServlet.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/pages/AdaugaRaspunsServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -160,16 +172,6 @@
                 <element signature="imports" expanded="true" />
                 <marker date="1560316637656" expanded="true" signature="1517:1692" ph="select p.num... piesa" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DetaliiProgramari.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/dto/DetaliiProgramari.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -676,12 +678,12 @@
       <workItem from="1559998484056" duration="1803000" />
       <workItem from="1560082607670" duration="9134000" />
       <workItem from="1560097981817" duration="1538000" />
-      <workItem from="1560151047746" duration="60517000" />
+      <workItem from="1560151047746" duration="60753000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="370486000" />
+    <option name="totallyTimeSpent" value="370722000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1020,16 +1022,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/AdaugaRaspunsServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="23" column="57" lean-forward="false" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/ContactServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="123">
@@ -1265,6 +1257,16 @@
         <state relative-caret-position="279">
           <caret line="91" column="81" lean-forward="false" selection-start-line="91" selection-start-column="81" selection-end-line="91" selection-end-column="81" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/AdaugaRaspunsServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
