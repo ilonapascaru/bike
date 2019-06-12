@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<stocuri>
+    <an>2019</an>
+    <idFurnizor>0</idFurnizor>
+    <model>nou</model>
+    <nume>roata</nume>
+    <pret>300</pret>
+    <cantitate>3</cantitate>
+    <idPiesa>0</idPiesa>
+    <idStoc>0</idStoc>
+</stocuri>

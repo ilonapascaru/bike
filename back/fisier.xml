@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<artefacte>
+    <denumire>artefact2</denumire>
+    <descriere>kool</descriere>
+    <loc>Grecia Antica</loc>
+    <perioada_datata>bc</perioada_datata>
+    <rol>Tehnic</rol>
+    <tip>Arheologice</tip>
+    <valoare>101</valoare>
+</artefacte>

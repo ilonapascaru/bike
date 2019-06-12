@@ -1,66 +1,66 @@
 CREATE TABLE `User` (
-	`id_user` INT(20) NOT NULL AUTO_INCREMENT,
-	`username` VARCHAR(30) NOT NULL,
-	`password` VARCHAR(100) NOT NULL,
-	`name` VARCHAR(100) NOT NULL,
-	`email` VARCHAR(100) NOT NULL,
-	`type` BOOLEAN NOT NULL,
-	`telefon` INT(10) NOT NULL,
+	`id_user` INT(20)  ,
+	`username` VARCHAR(30) ,
+	`password` VARCHAR(100) ,
+	`name` VARCHAR(100) ,
+	`email` VARCHAR(100) ,
+	`type` BOOLEAN ,
+	`telefon` INT(10) ,
 	PRIMARY KEY (`id_user`)
 );
 
 CREATE TABLE `Programari` (
-	`id_programare` INT NOT NULL AUTO_INCREMENT,
-	`id_user` INT NOT NULL,
-	`model` VARCHAR(200) NOT NULL,
-	`descriere` VARCHAR(200) NOT NULL,
-	`data` DATE NOT NULL,
-	`ora` TIME NOT NULL,
-	`text_raspuns` VARCHAR(200) NOT NULL,
-	`atachament_name` VARCHAR(200) NOT NULL,
-	`pret` INT(200) NOT NULL,
+	`id_programare` INT  ,
+	`id_user` INT ,
+	`model` VARCHAR(200) ,
+	`descriere` VARCHAR(200) ,
+	`data` DATE ,
+	`ora` TIME ,
+	`text_raspuns` VARCHAR(200) ,
+	`atachament_name` VARCHAR(200) ,
+	`pret` INT(200) ,
 	PRIMARY KEY (`id_programare`)
 );
 
 CREATE TABLE `Stocuri` (
-	`id_stoc` INT(20) NOT NULL AUTO_INCREMENT,
-	`id_piesa` INT(20) NOT NULL,
-	`cantitate` INT(20) NOT NULL,
+	`id_stoc` INT(20)  ,
+	`id_piesa` INT(20) ,
+	`cantitate` INT(20) ,
 	PRIMARY KEY (`id_stoc`)
 );
 
 CREATE TABLE `Comenzi` (
-	`id_comanda` INT(20) NOT NULL AUTO_INCREMENT,
-	`id_piesa` INT(20) NOT NULL,
-	`id_furnizor` INT(20) NOT NULL,
-	`data_livrare` DATE NOT NULL,
-	`bucati` INT(10) NOT NULL,
+	`id_comanda` INT(20)  ,
+	`id_piesa` INT(20) ,
+	`id_furnizor` INT(20) ,
+	`data_livrare` DATE ,
+	`bucati` INT(10) ,
 	PRIMARY KEY (`id_comanda`)
 );
 
 CREATE TABLE `Furnizori` (
-	`id_furnizor` INT(20) NOT NULL AUTO_INCREMENT,
-	`nume` VARCHAR(200) NOT NULL AUTO_INCREMENT,
+	`id_furnizor` INT(20)  ,
+	`nume` VARCHAR(200)  ,
 	PRIMARY KEY (`id_furnizor`)
 );
 
 CREATE TABLE `Piesa` (
-	`id_piesa` INT(20) NOT NULL AUTO_INCREMENT,
-	`nume` VARCHAR(20) NOT NULL,
-	`model` VARCHAR(20) NOT NULL,
-	`an` INT(20) NOT NULL,
-	`id_furnizor` INT(20) NOT NULL,
-	`pret` INT(20) NOT NULL,
+	`id_piesa` INT(20)  ,
+	`nume` VARCHAR(20) ,
+	`model` VARCHAR(20) ,
+	`an` INT(20) ,
+	`id_furnizor` INT(20) ,
+	`pret` INT(20) ,
 	PRIMARY KEY (`id_piesa`)
 );
 
 CREATE TABLE `Mesaj` (
-	`id_mesaj` INT(20) NOT NULL AUTO_INCREMENT,
-	`nume` VARCHAR(20) NOT NULL,
-	`email` VARCHAR(20) NOT NULL,
-	`text` VARCHAR(2000) NOT NULL,
-	`citit` BOOLEAN NOT NULL,
-	`telefon` INT(10) NOT NULL,
+	`id_mesaj` INT(20)  ,
+	`nume` VARCHAR(20) ,
+	`email` VARCHAR(20) ,
+	`text` VARCHAR(2000) ,
+	`citit` BOOLEAN ,
+	`telefon` INT(10) ,
 	PRIMARY KEY (`id_mesaj`)
 );
 
