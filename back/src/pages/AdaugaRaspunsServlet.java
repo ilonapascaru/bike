@@ -18,24 +18,28 @@ import static function.DatabaseFunction.insertRaspunsProgramare;
 public class AdaugaRaspunsServlet extends HttpServlet {
 
     @Override
-    public void doPost (HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
-
-        String idProgramare = request.getParameter("id");
-        String mesaj = request.getParameter("raspuns");
-
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         HttpSession session = request.getSession(true);
-        Connection conn = null;
-        try{
-            conn = getConnection("bike");
-            insertRaspunsProgramare(conn, Integer.parseInt(idProgramare), mesaj);
-            response.sendRedirect("/programariAdmin");
-        }
-        catch(Exception ex){
-            ex.printStackTrace();
-        }
-        finally {
-            closeConn(conn);
+        String username = (String) session.getAttribute("username");
+        String tip = (String) session.getAttribute("admin");
+
+        if (username.isEmpty() && tip.isEmpty()) {
+            response.sendRedirect("http://localhost:8081/Login.jsp");
+        } else {
+            String idProgramare = request.getParameter("id");
+            String mesaj = request.getParameter("raspuns");
+
+            Connection conn = null;
+            try {
+                conn = getConnection("bike");
+                insertRaspunsProgramare(conn, Integer.parseInt(idProgramare), mesaj);
+                response.sendRedirect("/programariAdmin");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            } finally {
+                closeConn(conn);
+            }
         }
     }
-    }
+}
