@@ -30,19 +30,25 @@ public class ProgramariAdminServlet extends HttpServlet {
         response.setContentType("text/html");
         HttpSession session = request.getSession(true);
         String username = (String) session.getAttribute("username");
-        List<Programari> programari= new ArrayList<Programari>();
+        String tip = (String) session.getAttribute("admin");
 
-        Connection conn = null;
-        try {
-            conn = getConnection("bike");
-            programari = getProgramariAdmin(conn);
-            request.setAttribute("programariAdmin",programari);
-            RequestDispatcher dispatcher= request.getRequestDispatcher("ProgramariAdmin.jsp");
-            dispatcher.forward(request,response);
-        }catch (Exception e){
-            e.printStackTrace();
+        if (username.isEmpty() && tip.isEmpty()) {
+            response.sendRedirect("http://localhost:8081/Login.jsp");
+        } else {
+            List<Programari> programari = new ArrayList<Programari>();
+
+            Connection conn = null;
+            try {
+                conn = getConnection("bike");
+                programari = getProgramariAdmin(conn);
+                request.setAttribute("programariAdmin", programari);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("ProgramariAdmin.jsp");
+                dispatcher.forward(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            closeConn(conn);
         }
-
-        closeConn(conn);
     }
 }

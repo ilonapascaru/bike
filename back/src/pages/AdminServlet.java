@@ -26,20 +26,26 @@ public class AdminServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html");
+        List<Mesaj> mesaj = new ArrayList<Mesaj>();
         HttpSession session = request.getSession(true);
-        List<Mesaj> mesaj= new ArrayList<Mesaj>();
+        String username = (String) session.getAttribute("username");
+        String tip = (String) session.getAttribute("admin");
 
-        Connection conn = null;
-        try {
-            conn = getConnection("bike");
-            mesaj = getMess(conn);
-            request.setAttribute("mesaj",mesaj);
-            RequestDispatcher dispatcher= request.getRequestDispatcher("Admin.jsp");
-            dispatcher.forward(request,response);
-        }catch (Exception e){
-            e.printStackTrace();
+        if (username.isEmpty() && tip.isEmpty()) {
+            response.sendRedirect("http://localhost:8081/Login.jsp");
+        } else {
+            Connection conn = null;
+            try {
+                conn = getConnection("bike");
+                mesaj = getMess(conn);
+                request.setAttribute("mesaj", mesaj);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("Admin.jsp");
+                dispatcher.forward(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            closeConn(conn);
         }
-
-        closeConn(conn);
     }
 }
