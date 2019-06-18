@@ -35,37 +35,47 @@
               <li> Telefon: <td><%=detaliiProgramari.user.getTelefon()%> </li>
               <li> Email: <td><%=detaliiProgramari.user.getEmail()%></li>
               <li> Model: <td><%=detaliiProgramari.programari.getModel()%></li>
+
             <%@ page import="java.sql.*"%>
             <%@ page import="java.io.*"%>
             <%@ page import="static function.DatabaseFunction.getConnection" %>
-              <%
-                Blob image = null;
-                Connection con = null;
-                byte[ ] imgData = null ;
-                PreparedStatement stmt = null;
-                ResultSet rs = null;
-                try{
-                  con = getConnection("bike");
-                  stmt = con.prepareStatement("select atachament_name from programari where id_programare=?");
-                  stmt.setInt(1,detaliiProgramari.programari.getIdProgramare());
-                  if(rs.next()){
-                      image = rs.getBlob(1);
-                      imgData = image.getBytes(1,(int)image.length());
-                  }
-                  else{
-                      out.println("No image");
-                      return;
-                  }
-                  response.setContentType("image/jpg");
-                  OutputStream o = response.getOutputStream();
-                  o.write(imgData);
-                  o.flush();
-                  o.close();
+            <%@ page import="java.util.Base64" %>
+            <%
+              Blob image = null;
+              Connection con = null;
+              byte[ ] imgData = null ;
+              PreparedStatement stmt = null;
+              String imgDataBase64 = null;
+              ResultSet rs = null;
+              try{
+                con = getConnection("bike");
+                stmt = con.prepareStatement("select atachament_name from programari where id_programare=?");
+                stmt.setInt(1,detaliiProgramari.programari.getIdProgramare());
+                rs = stmt.executeQuery();
+                if(rs.next()){
+                  image = rs.getBlob(1);
+                  imgData = image.getBytes(1,(int)image.length());
+                  imgDataBase64=new String(Base64.getEncoder().encode(imgData));
                 }
-                catch (Exception ex){
-                    ex.printStackTrace();
+                else{
+                  out.println("No image");
+                  return;
                 }
-                %>
+                /*response.setContentType("image/jpg");
+                OutputStream o = response.getOutputStream();
+                o.write(imgData);
+                o.flush();
+                o.close();*/
+              }
+              catch (Exception ex){
+                ex.printStackTrace();
+              }
+            %>
+
+            <tr>
+              <td><img src="data:image/jpeg;base64, <%=imgDataBase64%>" /></td>
+            </tr>
+
          </ul>
         </div>
       </div>

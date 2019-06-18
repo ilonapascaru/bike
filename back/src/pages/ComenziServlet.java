@@ -1,4 +1,4 @@
-package pages;
+package pages.comenzi;
 
 import dto.Comenzi;
 import dto.Mesaj;
@@ -25,9 +25,14 @@ public class ComenziServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html");
-        HttpSession session = request.getSession(true);
         List<Comenzi> comenzi= new ArrayList<Comenzi>();
+        HttpSession session = request.getSession(true);
+        String username = (String) session.getAttribute("username");
+        String tip = (String) session.getAttribute("admin");
 
+        if (username.isEmpty() && tip.isEmpty()) {
+            response.sendRedirect("http://localhost:8081/Login.jsp");
+        } else {
         Connection conn = null;
         try {
             conn = getConnection("bike");
@@ -40,5 +45,5 @@ public class ComenziServlet extends HttpServlet {
         }
 
         closeConn(conn);
-    }
+    }}
 }
